@@ -267,10 +267,10 @@ call NERDTreeAddMenuItem({'text': '(b)em create', 'shortcut': 'b', 'callback': '
 function! NERDTreeBEM()                                                         
     let treenode = g:NERDTreeFileNode.GetSelected()                             
     let namenode = treenode.path.getLastPathComponent(0)                        
-    let inputBEM = input("bem create -l " . namenode . " ")                                                          
-    let pathBEM = b:NERDTreeRoot.path.str()                                     
-    exec "!cd " . pathBEM . " && /usr/local/share/npm/bin/bem create -l ".      
-        \ namenode . " " . inputBEM                                             
+    let pathnode = treenode.path.str()                                          
+    let inputBEM = input("bem create -l " . namenode . " ")                     
+    call system( "/usr/local/share/npm/bin/bem create -l ".                                                                       
+        \ pathnode . " " . inputBEM)                                            
 endfunction 
 
 " vim: set sw=4 sts=4 et fdm=marker:
